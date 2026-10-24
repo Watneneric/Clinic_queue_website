@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS clinic_queue
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE clinic_queue;
 
-CREATE TABLE IF NOT EXISTS staff_users (
+CREATE TABLE IF NOT EXISTS Staff (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(120) NOT NULL,
     email VARCHAR(190) NOT NULL UNIQUE,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS staff_users (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS patients (
+CREATE TABLE IF NOT EXISTS Patients (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(120) NOT NULL,
     phone VARCHAR(30) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS patients (
     INDEX idx_patients_phone (phone)
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS appointments (
+CREATE TABLE IF NOT EXISTS Appointments (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     patient_id INT UNSIGNED NOT NULL,
     appointment_date DATE NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS appointments (
     status ENUM('BOOKED','CONFIRMED','CANCELLED') NOT NULL DEFAULT 'BOOKED',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_appointments_patient FOREIGN KEY (patient_id)
-      REFERENCES patients(id) ON DELETE RESTRICT,
+      REFERENCES Patients(id) ON DELETE RESTRICT,
     INDEX idx_appointments_datetime (appointment_date, appointment_time),
     INDEX idx_appointments_status (status)
 ) ENGINE=InnoDB;
