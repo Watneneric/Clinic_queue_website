@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $pageTitle = 'Staff sign in';
 require __DIR__ . '/includes/header.php';
 ?>
-<section class="login-panel panel">
+<section class="login-page">
   <h1>Staff sign in</h1>
   <p class="muted">Sign in to manage clinic appointments and the patient queue.</p>
   <?php if ($error !== ''): ?><div class="notice error" role="alert"><?= e($error) ?></div><?php endif; ?>
