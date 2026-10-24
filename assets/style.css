@@ -176,6 +176,15 @@ h2 {
   flex-wrap: wrap;
 }
 
+.login-panel {
+  max-width: 500px;
+  margin: 36px auto;
+}
+
+.login-panel h1 {
+  font-size: 1.8rem;
+}
+
 .table-wrap {
   overflow-x: auto;
   border: 1px solid #e7eff0;
